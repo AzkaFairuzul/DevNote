@@ -1,13 +1,93 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + TS</title>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.ts"></script>
+    <div class="sidebar">
+      <img src="src/logo.png" width="200px" height="65px" />
+      <button id="newNoteBtn"><span class="plus">+</span> New Note</button>
+      <div id="devNote">
+        <h2 id="name">DevNote</h2>
+        <button id="newNoteIcon">+</button>
+      </div>
+      <ul id="noteList">
+        <!-- Notes will be appended here dynamically -->
+        <!-- Example note item for demonstration -->
+        <li class="note-list-item">
+          <span class="note-title">Sample Note</span>
+          <div class="note-actions">
+            <button class="btn-update">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="currentColor"
+                  d="M5 19h1.425L16.2 9.225L14.775 7.8L5 17.575zm-1 2q-.425 0-.712-.288T3 20v-2.425q0-.4.15-.763t.425-.637L16.2 3.575q.3-.275.663-.425t.762-.15t.775.15t.65.45L20.425 5q.3.275.437.65T21 6.4q0 .4-.138.763t-.437.662l-12.6 12.6q-.275.275-.638.425t-.762.15zM19 6.4L17.6 5zm-3.525 2.125l-.7-.725L16.2 9.225z"
+                />
+              </svg>
+            </button>
+            <button class="btn-delete">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="currentColor"
+                  d="M7 21q-.825 0-1.412-.587T5 19V6q-.425 0-.712-.288T4 5t.288-.712T5 4h4q0-.425.288-.712T10 3h4q.425 0 .713.288T15 4h4q.425 0 .713.288T20 5t-.288.713T19 6v13q0 .825-.587 1.413T17 21zM17 6H7v13h10zm-7 11q.425 0 .713-.288T11 16V9q0-.425-.288-.712T10 8t-.712.288T9 9v7q0 .425.288.713T10 17m4 0q.425 0 .713-.288T15 16V9q0-.425-.288-.712T14 8t-.712.288T13 9v7q0 .425.288.713T14 17M7 6v13z"
+                />
+              </svg>
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="content">
+      <div id="greetingDisplay"></div>
+      <h2 style="color: #1e1e1e; font-size: 21px">Notes</h2>
+      <div id="notesDisplay">
+        <!-- Notes will be displayed here dynamically -->
+      </div>
+    </div>
+
+    <!-- Modal for creating and updating notes -->
+    <div id="noteModal" class="modal">
+      <div class="modal-content">
+        <span id="closeNoteModal" class="close">&times;</span>
+        <h2 id="modalTitle">New Note</h2>
+        <!-- Modal title -->
+        <input type="text" id="noteTitle" placeholder="Untitled" />
+        <span
+          id="titleError"
+          class="error-message"
+          style="color: #c82333"
+        ></span>
+        <textarea id="noteContent" placeholder="Add your note..."></textarea>
+        <span
+          id="contentError"
+          class="error-message"
+          style="color: #c82333"
+        ></span>
+        <button id="saveNoteBtn">Save Note</button>
+      </div>
+    </div>
+
+    <!-- Modal for delete confirmation -->
+    <div id="deleteModal" class="modal">
+      <div class="modal-content">
+        <span id="closeDeleteModal" class="close">&times;</span>
+        <p>Are you sure you want to delete this note?</p>
+        <button id="cancelDeleteBtn">Cancel</button>
+        <button id="confirmDeleteBtn">Delete</button>
+      </div>
+    </div>
+    <script type="module" src="./src/main.ts"></script>
   </body>
 </html>
